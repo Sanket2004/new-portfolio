@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sanketbanerjee.netlify.app/sitemap.xml
