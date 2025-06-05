@@ -82,7 +82,7 @@ export default function Footer() {
 
         <motion.div
           variants={childVariants}
-          className="text-center text-gray-500 mt-6 font-medium px-6 text-sm"
+          className="text-center text-zinc-600 dark:text-zinc-400 mt-6 font-medium px-6 text-sm"
         >
           <p>
             &copy; {new Date().getFullYear()} {data.name}. Hire me before I get

@@ -98,7 +98,7 @@ export default function ContactPage() {
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="font-medium text-gray-700 mb-12"
+          className="font-medium text-zinc-600 dark:text-zinc-400 mb-12"
         >
           If you have any questions or just want to say hi, feel free to reach
           out!
@@ -112,7 +112,7 @@ export default function ContactPage() {
             <motion.div variants={itemVariants}>
               <label
                 htmlFor="name"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-zinc-600 dark:text-zinc-400"
               >
                 Name
               </label>
@@ -130,7 +130,7 @@ export default function ContactPage() {
             <motion.div variants={itemVariants}>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-zinc-600 dark:text-zinc-400"
               >
                 Email
               </label>
@@ -154,7 +154,7 @@ export default function ContactPage() {
             <motion.div variants={itemVariants}>
               <label
                 htmlFor="message"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-zinc-600 dark:text-zinc-400"
               >
                 Message
               </label>
@@ -172,7 +172,7 @@ export default function ContactPage() {
             <motion.button
               variants={itemVariants}
               type="submit"
-              className="w-full bg-black/10 border-2 text-black py-2.5 px-4 rounded-full hover:bg-black/15 cursor-pointer font-semibold"
+              className="w-full bg-black/10 dark:bg-white/10 border-2 text-black dark:text-white py-2.5 px-4 rounded-full hover:bg-black/15 dark:hover:bg-white/15 cursor-pointer font-semibold"
               style={isLoading ? { cursor: "not-allowed" } : {}}
               disabled={isLoading}
             >
@@ -198,7 +198,7 @@ export default function ContactPage() {
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="font-medium text-gray-700 mb-8"
+              className="font-medium text-zinc-600 dark:text-zinc-400 mb-8"
             >
               Feel free to reach out via email or connect with me on social
               media.

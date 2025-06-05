@@ -10,6 +10,7 @@ import ScrollToTop from "./components/utils/ScrollToTop.jsx";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton.jsx";
 import { HelmetProvider } from "react-helmet-async";
 
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>

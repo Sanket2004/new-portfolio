@@ -100,7 +100,7 @@ export default function HomePage() {
             {/* description */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-700 mt-4 text-center md:text-left font-medium"
+              className="text-zinc-600 dark:text-zinc-400 mt-4 text-center md:text-left font-medium"
             >
               Check out what{" "}
               <a href={data.social_medias.github} className="border-b-2">
@@ -154,7 +154,7 @@ export default function HomePage() {
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="text-gray-700 text-center font-medium mb-12"
+              className="text-zinc-600 dark:text-zinc-400 text-center font-medium mb-12"
             >
               Here are some of the technologies and tools I work with
             </motion.p>

@@ -26,7 +26,7 @@ export default function ScrollToTopButton() {
         exit={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         onClick={scrollToTop}
-        className="bg-black text-white fixed bottom-6 right-6 z-50 shadow-xl p-3 rounded-full cursor-pointer"
+        className="bg-black dark:bg-white text-white dark:text-black fixed bottom-6 right-6 z-50 shadow-xl p-3 rounded-full cursor-pointer"
         aria-label="Scroll to top"
       >
         <FiChevronUp size={20} />

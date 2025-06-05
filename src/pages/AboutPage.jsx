@@ -61,7 +61,22 @@ export default function AboutPage() {
         </motion.h1>
         <motion.article
           variants={itemVariants}
-          className="prose prose-p: font-medium"
+          className="
+          prose
+          prose-p: font-medium 
+          prose-p:text-zinc-600 
+          prose-headings:text-black
+          prose-headings:font-bold
+          prose-strong:text-black
+          prose-a:text-black
+          prose-li:text-zinc-600
+          dark:prose-headings:text-white 
+          dark:prose-p:text-zinc-400 
+          dark:prose-a:text-zinc-100
+          dark:prose-strong:text-zinc-100
+          dark:prose-li:text-zinc-400
+          dark:prose-hr:border-zinc-700
+          "
           style={{ maxWidth: "100%" }}
         >
           <ReactMarkdown>{data.about}</ReactMarkdown>
@@ -86,12 +101,12 @@ export default function AboutPage() {
                   <img
                     src={edu.image}
                     alt={edu.degree}
-                    className="size-12 object-cover rounded-md mt-1.5 border-2"
+                    className="size-12 object-cover rounded-md mt-1.5 border-2 bg-white"
                   />
                   <div>
                     <h3 className="font-semibold">{edu.degree}</h3>
                     <p className="font-medium">{edu.institution}</p>
-                    <p className="text-sm text-gray-500 font-medium">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
                       {edu.duration}
                     </p>
                   </div>
@@ -116,7 +131,7 @@ export default function AboutPage() {
                   className="flex items-center gap-2"
                 >
                   <span className="font-medium">{lang.language}</span>
-                  <span className="text-sm text-gray-500 font-medium">
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
                     ({lang.proficiency})
                   </span>
                 </motion.li>
@@ -127,9 +142,9 @@ export default function AboutPage() {
 
         <motion.p
           variants={itemVariants}
-          className="mt-8 text-sm text-gray-500 font-medium"
+          className="mt-8 text-sm text-zinc-600 dark:text-zinc-400 font-medium"
         >
-          Details Last Updated:{" "}
+          Details Last Updated On:{" "}
           {new Date(data.last_updated).toLocaleDateString("en-IN")}
         </motion.p>
       </motion.section>

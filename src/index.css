@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Quicksand", sans-serif;
@@ -7,9 +8,12 @@
 
 @layer base {
   *,
-  html,
+  html {
+    @apply font-sans scroll-smooth transition-colors duration-300;
+  }
+
   body {
-    @apply font-sans;
+    @apply bg-white dark:bg-zinc-950 text-black dark:text-white;
   }
 
   /* Chrome, Edge and Safari */
@@ -43,9 +47,4 @@
   *::-webkit-scrollbar-thumb:active {
     background-color: #e3e3e3;
   }
-
-}
-
-@layer utilities {
-  /* Add custom utility classes here if needed */
 }

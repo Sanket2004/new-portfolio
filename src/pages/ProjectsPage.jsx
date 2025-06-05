@@ -61,7 +61,7 @@ export default function ProjectsPage() {
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="font-medium text-gray-700 mb-12"
+          className="font-medium text-zinc-700 dark:text-zinc-400 mb-12"
         >
           Here are some of the projects I've worked on. Click on any project to
           learn more about it.
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
                 <h1 className="text-lg md:text-xl font-bold mb-4">
                   {project.title}
                 </h1>
-                <p className="font-medium text-gray-700 mb-6">
+                <p className="font-medium text-zinc-700 dark:text-zinc-400 mb-6">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
                   rel="noopener noreferrer"
                   className="decoration-0"
                 >
-                  <button className="bg-black text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer">
+                  <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer">
                     View Project
                     <FiExternalLink />
                   </button>
