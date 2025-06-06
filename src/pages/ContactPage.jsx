@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import data from "../assets/data.json";
 import { FiGithub, FiLinkedin, FiMail, FiMapPin } from "react-icons/fi";
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/utils/SEO";
 
 export default function ContactPage() {
   const {
@@ -60,31 +60,42 @@ export default function ContactPage() {
     visible: { opacity: 1, x: 0 },
   };
 
+  // Enhanced structured data for contact page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Sanket Banerjee",
+    description:
+      "Get in touch with Sanket Banerjee for collaborations, projects, or just to say hi",
+    url: "https://sanket-new-portfolio.vercel.app/contact",
+    mainEntity: {
+      "@type": "Person",
+      name: "Sanket Banerjee",
+      jobTitle: "Full-Stack Developer",
+      email: data.social_medias?.email || "",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: data.location?.city || "Kolkata",
+        addressRegion: data.location?.state || "West Bengal",
+        addressCountry: data.location?.country || "India",
+      },
+      sameAs: [
+        data.social_medias?.github || "",
+        data.social_medias?.linkedin || "",
+      ],
+    },
+  };
+
   return (
     <>
       {/* SEOs */}
-      <Helmet>
-        <title>Contact | Sanket Banerjee</title>
-        <meta
-          name="description"
-          content="Want to collaborate or have a chat? Reach out to Sanket Banerjee via email or connect on LinkedIn and GitHub."
-        />
-        <meta name="author" content="Sanket Banerjee" />
-        <meta property="og:title" content="Contact Sanket Banerjee" />
-        <meta
-          property="og:description"
-          content="Feel free to connect with Sanket on LinkedIn or GitHub, or drop an email for collaborations."
-        />
-        <meta
-          property="og:image"
-          content="https://sanketbanerjee.netlify.app/images/og.png"
-        />
-        <meta
-          property="og:url"
-          content="https://sanketbanerjee.netlify.app/contact"
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Contact"
+        description="Want to collaborate or have a chat? Reach out to Sanket Banerjee via email or connect on LinkedIn and GitHub. Available for freelance projects, full-time opportunities, and technical discussions."
+        keywords="Contact Sanket Banerjee, Hire Full Stack Developer, React Developer Contact, Freelance Developer India, Software Engineer Contact, Web Developer Kolkata, Collaboration Opportunities"
+        url="/contact"
+        structuredData={structuredData}
+      />
 
       {/* components */}
       <motion.section

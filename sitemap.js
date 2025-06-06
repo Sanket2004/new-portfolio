@@ -1,7 +1,12 @@
 // sitemap.js
 import { SitemapStream, streamToPromise } from "sitemap";
-import { createWriteStream } from "node:fs";
+import { createWriteStream, mkdirSync, existsSync } from "node:fs";
 import { Readable } from "node:stream";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const links = [
   { url: "/", changefreq: "monthly", priority: 1.0 },
@@ -10,12 +15,38 @@ const links = [
   { url: "/contact", changefreq: "monthly", priority: 0.7 },
 ];
 
-const stream = new SitemapStream({
-  hostname: "https://sanketbanerjee.netlify.app",
-});
+async function generateSitemap() {
+  try {
+    const distPath = resolve(__dirname, "dist");
 
-const sitemap = await streamToPromise(Readable.from(links).pipe(stream));
+    // Ensure dist directory exists
+    if (!existsSync(distPath)) {
+      mkdirSync(distPath, { recursive: true });
+    }
 
-createWriteStream("./dist/sitemap.xml").write(sitemap.toString());
+    const stream = new SitemapStream({
+      hostname: "https://sanket-new-portfolio.vercel.app",
+    });
 
-console.log("Sitemap generated at dist/sitemap.xml");
+    // Add current timestamp to all URLs
+    const linksWithTimestamp = links.map((link) => ({
+      ...link,
+      lastmod: new Date().toISOString(),
+    }));
+
+    const sitemap = await streamToPromise(
+      Readable.from(linksWithTimestamp).pipe(stream)
+    );
+
+    const sitemapPath = resolve(distPath, "sitemap.xml");
+    createWriteStream(sitemapPath).write(sitemap.toString());
+
+    console.log("Sitemap generated successfully at dist/sitemap.xml");
+    console.log(`Generated ${linksWithTimestamp.length} URLs`);
+  } catch (error) {
+    console.error("❌ Error generating sitemap:", error);
+    process.exit(1);
+  }
+}
+
+generateSitemap();

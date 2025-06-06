@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import data from "../assets/data.json";
 import ReactMarkdown from "react-markdown";
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/utils/SEO";
 
 export default function AboutPage() {
   const containerVariants = {
@@ -23,33 +23,53 @@ export default function AboutPage() {
     visible: { opacity: 1, x: 0 },
   };
 
+  // Enhanced structured data for about page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      name: "Sanket Banerjee",
+      jobTitle: "Full-Stack Developer",
+      description:
+        "Learn more about Sanket Banerjee, a full-stack developer from Kolkata, India with experience in real-time systems, AI/ML, and cross-platform mobile development.",
+      url: "https://sanket-new-portfolio.vercel.app/about",
+      image: "https://sanket-new-portfolio.vercel.app/images/og.png",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: data.location?.city || "Kolkata",
+        addressRegion: data.location?.state || "West Bengal",
+        addressCountry: data.location?.country || "India",
+      },
+      email: data.social_medias?.email || "",
+      alumniOf:
+        data.education?.map((edu) => ({
+          "@type": "EducationalOrganization",
+          name: edu.institution,
+          description: edu.degree,
+          startDate: edu.duration?.split(" - ")[0] || "",
+          endDate: edu.duration?.split(" - ")[1] || "",
+        })) || [],
+      knowsLanguage:
+        data.languages?.map((lang) => ({
+          "@type": "Language",
+          name: lang.language,
+          proficiency: lang.proficiency,
+        })) || [],
+    },
+  };
+
   return (
     <>
-      {/* SEO */}
-      <Helmet>
-        <title>About | Sanket Banerjee</title>
-        <meta
-          name="description"
-          content="Learn more about Sanket Banerjee, a full-stack developer from Kolkata, India with experience in real-time systems, AI/ML, and cross-platform mobile development."
-        />
-        <meta name="author" content="Sanket Banerjee" />
-        <meta property="og:title" content="About Sanket Banerjee" />
-        <meta
-          property="og:description"
-          content="Explore Sanket's background, tech stack, and journey in full-stack development."
-        />
-        <meta
-          property="og:image"
-          content="https://sanketbanerjee.netlify.app/images/og.png"
-        />
-        <meta
-          property="og:url"
-          content="https://sanketbanerjee.netlify.app/about"
-        />
-        <meta property="og:type" content="profile" />
-      </Helmet>
+      <SEO
+        title="About"
+        description="Learn more about Sanket Banerjee, a passionate full-stack developer from Kolkata, India with expertise in real-time systems, AI/ML, cross-platform mobile development, and modern web technologies. Discover my educational background, technical skills, and professional journey."
+        keywords="About Sanket Banerjee, Full Stack Developer Background, Software Engineer Experience, React Developer India, Node.js Expert, Flutter Developer, Educational Background, Technical Skills, Professional Journey"
+        url="/about"
+        type="profile"
+        structuredData={structuredData}
+      />
 
-      {/* components */}
       <motion.section
         initial="hidden"
         animate="visible"
@@ -91,23 +111,25 @@ export default function AboutPage() {
             >
               Education
             </motion.h2>
-            <ul className="space-y-4">
+            <ul className="space-y-4" role="list">
               {data.education.map((edu, index) => (
                 <motion.li
                   variants={itemVariants}
                   key={index}
                   className="border-l-2 pl-4 flex items-start gap-4"
+                  role="listitem"
                 >
                   <img
                     src={edu.image}
-                    alt={edu.degree}
+                    alt={`${edu.institution} logo`}
                     className="size-12 object-cover rounded-md mt-1.5 border-2 bg-white"
+                    loading="lazy"
                   />
                   <div>
                     <h3 className="font-semibold">{edu.degree}</h3>
                     <p className="font-medium">{edu.institution}</p>
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
-                      {edu.duration}
+                      <time>{edu.duration}</time>
                     </p>
                   </div>
                 </motion.li>
@@ -123,12 +145,13 @@ export default function AboutPage() {
             >
               Languages Known
             </motion.h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2" role="list">
               {data.languages.map((lang, index) => (
                 <motion.li
                   variants={itemVariants}
                   key={index}
                   className="flex items-center gap-2"
+                  role="listitem"
                 >
                   <span className="font-medium">{lang.language}</span>
                   <span className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
@@ -145,7 +168,9 @@ export default function AboutPage() {
           className="mt-8 text-sm text-zinc-600 dark:text-zinc-400 font-medium"
         >
           Details Last Updated On:{" "}
-          {new Date(data.last_updated).toLocaleDateString("en-IN")}
+          <time dateTime={data.last_updated}>
+            {new Date(data.last_updated).toLocaleDateString("en-IN")}
+          </time>
         </motion.p>
       </motion.section>
     </>

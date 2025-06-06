@@ -3,7 +3,7 @@ import data from "../assets/data.json";
 import { motion } from "framer-motion";
 import * as FaIcons from "react-icons/fa6";
 import * as SiIcons from "react-icons/si";
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/utils/SEO";
 
 export default function HomePage() {
   const containerVariants = {
@@ -29,37 +29,47 @@ export default function HomePage() {
     ...SiIcons,
   };
 
+  // Enhanced structured data for homepage
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sanket Banerjee",
+    jobTitle: "Full-Stack Developer",
+    description:
+      "Passionate Full-Stack Developer specializing in scalable web and mobile applications",
+    url: "https://sanket-new-portfolio.vercel.app",
+    image: "https://sanket-new-portfolio.vercel.app/images/og.png",
+    sameAs: [
+      data.social_medias?.github || "",
+      data.social_medias?.linkedin || "",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: data.location?.city || "Kolkata",
+      addressRegion: data.location?.state || "West Bengal",
+      addressCountry: data.location?.country || "India",
+    },
+    email: data.social_medias?.email || "",
+    knowsAbout: data.skills?.map((skill) => skill.name) || [],
+    alumniOf:
+      data.education?.map((edu) => ({
+        "@type": "EducationalOrganization",
+        name: edu.institution,
+        description: edu.degree,
+      })) || [],
+  };
+
   return (
     <>
-      {/* SEO */}
-      <Helmet>
-        <title>{`Sanket Banerjee | Full-Stack Developer`}</title>
-        <meta
-          name="description"
-          content="Sanket Banerjee is a passionate Full-Stack Developer from India specializing in scalable web and mobile applications with React, Node.js, and Flutter."
-        />
-        <meta
-          name="keywords"
-          content="Sanket Banerjee, Full-Stack Developer, React, Node.js, Flutter, MongoDB, Software Engineer, Portfolio"
-        />
-        <meta name="author" content="Sanket Banerjee" />
-        <meta
-          property="og:title"
-          content="Sanket Banerjee | Full-Stack Developer"
-        />
-        <meta
-          property="og:description"
-          content="Building modern, scalable, and user-centric web and mobile applications."
-        />
-        <meta
-          property="og:image"
-          content="https://sanketbanerjee.netlify.app/images/og.png"
-        />
-        <meta property="og:url" content="https://sanketbanerjee.netlify.app" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Home"
+        description="Passionate Full-Stack Developer from Kolkata, India specializing in scalable web and mobile applications with React, Node.js, Flutter, and modern technologies. Building user-centric applications that make a difference."
+        keywords="Sanket Banerjee, Full Stack Developer, React Developer, Node.js Developer, Flutter Developer, JavaScript, TypeScript, MongoDB, Express, Software Engineer, Web Developer, Mobile App Developer, Kolkata Developer, India"
+        url="/"
+        type="profile"
+        structuredData={structuredData}
+      />
 
-      {/* components */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -75,8 +85,9 @@ export default function HomePage() {
           >
             <img
               src={data.profileImage}
-              alt="Profile"
+              alt="Sanket Banerjee - Full-Stack Developer"
               className="object-cover"
+              loading="eager"
             />
           </motion.div>
           {/* end of mobile profile image */}
@@ -103,17 +114,26 @@ export default function HomePage() {
               className="text-zinc-600 dark:text-zinc-400 mt-4 text-center md:text-left font-medium"
             >
               Check out what{" "}
-              <a href={data.social_medias.github} className="border-b-2">
+              <a
+                href={data.social_medias.github}
+                className="border-b-2"
+                aria-label="View Sanket's GitHub projects"
+              >
                 I've been working on
               </a>
               , find me on{" "}
-              <a href={data.social_medias.linkedin} className="border-b-2">
+              <a
+                href={data.social_medias.linkedin}
+                className="border-b-2"
+                aria-label="Connect with Sanket on LinkedIn"
+              >
                 LinkedIn
               </a>
               , or just{" "}
               <a
                 href={`mailto:${data.social_medias.email}`}
                 className="border-b-2"
+                aria-label="Send Sanket an email"
               >
                 send me an email
               </a>{" "}
@@ -130,8 +150,9 @@ export default function HomePage() {
           >
             <img
               src={data.profileImage}
-              alt="Profile"
-              className=" object-cover shadow-lg"
+              alt="Sanket Banerjee - Full-Stack Developer"
+              className="object-cover shadow-lg"
+              loading="eager"
             />
           </motion.div>
           {/* end of desktop profile image */}
@@ -179,8 +200,10 @@ export default function HomePage() {
                     className={`p-3 rounded-lg border-2 inline-flex gap-4 items-center justify-center md:justify-start cursor-pointer ${
                       colors[idx % colors.length]
                     }`}
+                    role="listitem"
+                    aria-label={`${skill.name} skill`}
                   >
-                    {Icon && <Icon className="text-4xl" />}
+                    {Icon && <Icon className="text-4xl" aria-hidden="true" />}
                     <h3 className="text-lg font-semibold hidden md:block">
                       {skill.name}
                     </h3>
