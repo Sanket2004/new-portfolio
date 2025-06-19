@@ -13,7 +13,7 @@ const SEO = ({
   canonicalUrl,
   structuredData,
 }) => {
-  const baseUrl = "https://sanket-new-portfolio.vercel.app";
+  const baseUrl = "https://sanketbanerjee.tech";
   const defaultImage = `${baseUrl}/images/og.png`;
 
   const seoTitle = title

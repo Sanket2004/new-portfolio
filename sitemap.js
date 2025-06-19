@@ -25,7 +25,7 @@ async function generateSitemap() {
     }
 
     const stream = new SitemapStream({
-      hostname: "https://sanket-new-portfolio.vercel.app",
+      hostname: "https://sanketbanerjee.tech",
     });
 
     // Add current timestamp to all URLs

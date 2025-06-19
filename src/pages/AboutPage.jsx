@@ -33,8 +33,8 @@ export default function AboutPage() {
       jobTitle: "Full-Stack Developer",
       description:
         "Learn more about Sanket Banerjee, a full-stack developer from Kolkata, India with experience in real-time systems, AI/ML, and cross-platform mobile development.",
-      url: "https://sanket-new-portfolio.vercel.app/about",
-      image: "https://sanket-new-portfolio.vercel.app/images/og.png",
+      url: "https://sanketbanerjee.tech/about",
+      image: "https://sanketbanerjee.tech/images/og.png",
       address: {
         "@type": "PostalAddress",
         addressLocality: data.location?.city || "Kolkata",

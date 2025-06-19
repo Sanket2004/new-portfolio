@@ -30,7 +30,7 @@ export default function ProjectsPage() {
     name: "Projects by Sanket Banerjee",
     description:
       "Explore projects by Sanket Banerjee including real-time apps, social platforms, password managers, and AI integrations",
-    url: "https://sanket-new-portfolio.vercel.app/projects",
+    url: "https://sanketbanerjee.tech/projects",
     author: {
       "@type": "Person",
       name: "Sanket Banerjee",

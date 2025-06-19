@@ -37,8 +37,8 @@ export default function HomePage() {
     jobTitle: "Full-Stack Developer",
     description:
       "Passionate Full-Stack Developer specializing in scalable web and mobile applications",
-    url: "https://sanket-new-portfolio.vercel.app",
-    image: "https://sanket-new-portfolio.vercel.app/images/og.png",
+    url: "https://sanketbanerjee.tech",
+    image: "https://sanketbanerjee.tech/images/og.png",
     sameAs: [
       data.social_medias?.github || "",
       data.social_medias?.linkedin || "",

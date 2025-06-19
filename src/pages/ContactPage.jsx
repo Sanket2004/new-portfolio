@@ -67,7 +67,7 @@ export default function ContactPage() {
     name: "Contact Sanket Banerjee",
     description:
       "Get in touch with Sanket Banerjee for collaborations, projects, or just to say hi",
-    url: "https://sanket-new-portfolio.vercel.app/contact",
+    url: "https://sanketbanerjee.tech/contact",
     mainEntity: {
       "@type": "Person",
       name: "Sanket Banerjee",
