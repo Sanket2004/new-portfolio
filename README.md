@@ -31,5 +31,5 @@ I specialize in building modern, scalable, and user-centric web and mobile appli
 ## Contact
 
 - **GitHub:** [https://github.com/Sanket2004](https://github.com/Sanket2004)
-- **LinkedIn:** [https://www.linkedin.com/in/sanket-banerjee-6a5029231](https://www.linkedin.com/in/sanket-banerjee-6a5029231)
+- **LinkedIn:** [https://www.linkedin.com/in/itsanketbanerjee](https://www.linkedin.com/in/itsanketbanerjee)
 - **Email:** [itsanketbanerjee@gmail.com](mailto:itsanketbanerjee@gmail.com)
