@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import data from "../assets/data.json";
 import { FiGithub, FiLinkedin, FiMail, FiMapPin } from "react-icons/fi";
 import SEO from "../components/utils/SEO";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function ContactPage() {
   const {
@@ -229,36 +230,48 @@ export default function ContactPage() {
                 </span>
               </motion.p>
               <motion.a
+                whileHover={{ x: 2 }}
                 variants={itemVariants}
                 href={`mailto:${data.social_medias.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 mb-4 font-medium group"
+                className="flex items-center gap-2 mb-4 font-medium"
               >
                 <FiMail />
-                <span className="ml-2 group-hover:border-b">
-                  {data.social_medias.email}
-                </span>
+                <span className="ml-2">{data.social_medias.email}</span>
               </motion.a>
               <motion.a
+                whileHover={{ x: 2 }}
                 variants={itemVariants}
                 href={data.social_medias.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 mb-4 font-medium group"
+                className="flex items-center gap-2 mb-4 font-medium"
               >
                 <FiLinkedin />
-                <span className="ml-2 group-hover:border-b">LinkedIn</span>
+                <span className="ml-2">{data.social_medias.linkedin.split("/")[4]}</span>
               </motion.a>
               <motion.a
+                whileHover={{ x: 2 }}
                 variants={itemVariants}
                 href={data.social_medias.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 mb-4 font-medium group"
+                className="flex items-center gap-2 mb-4 font-medium"
               >
                 <FiGithub />
-                <span className="ml-2 group-hover:border-b">GitHub</span>
+                <span className="ml-2">{data.social_medias.github.split("/")[3]}</span>
+              </motion.a>
+              <motion.a
+                whileHover={{ x: 2 }}
+                variants={itemVariants}
+                href={data.social_medias.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 mb-4 font-medium"
+              >
+                <FaXTwitter />
+                <span className="ml-2">{data.social_medias.x.split("/")[3]}</span>
               </motion.a>
             </div>
           </div>

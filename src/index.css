@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Quicksand", sans-serif;
+  --font-sans: "National Park", sans-serif;
 }
 
 @layer base {

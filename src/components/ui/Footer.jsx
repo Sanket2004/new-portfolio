@@ -15,6 +15,7 @@ export default function Footer() {
     { name: "LinkedIn", href: data.social_medias.linkedin },
     { name: "GitHub", href: data.social_medias.github },
     { name: "Email", href: `mailto:${data.social_medias.email}` },
+    { name: "X (Twitter)", href: data.social_medias.x },
   ];
 
   // Animation variants
