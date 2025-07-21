@@ -265,7 +265,7 @@ export default function ContactPage() {
               <motion.a
                 whileHover={{ x: 2 }}
                 variants={itemVariants}
-                href={data.social_medias.github}
+                href={data.social_medias.x}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 mb-4 font-medium"
