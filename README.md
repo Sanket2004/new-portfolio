@@ -1,35 +1,54 @@
-# Sanket Banerjee Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to my personal portfolio website repository!  
-This site showcases my skills, projects, experience, and contact information.
+## Getting Started
 
+First, run the development server:
 
-## About Me
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Hi, I'm **Sanket Banerjee** — a passionate and detail-oriented Full-Stack Developer and Tech Enthusiast from India.  
-I specialize in building modern, scalable, and user-centric web and mobile applications using technologies like React, Next.js, Node.js, Flutter, and more.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Features
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Responsive multi-page portfolio site
-- Real-time project demos and links
-- Interactive education and skills sections
-- Smooth scroll-to-top button and animations
-- SEO optimized with React Helmet
-- Deployed with Vite and hosted on Netlify
+## Spotify Now Playing
 
+The homepage can show the track currently playing on your Spotify account. It uses the Spotify Web API and requires a refresh token authorized with the `user-read-currently-playing` scope.
 
-## Tech Stack
+1. Create an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and configure a redirect URI for the Authorization Code flow.
+2. Authorize your Spotify account with the `user-read-currently-playing` scope and obtain a refresh token using [Spotify's Authorization Code flow](https://developer.spotify.com/documentation/web-api/tutorials/code-flow).
+3. Copy `.env.example` to `.env.local` and set `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN`.
+4. Restart the app. Credentials are only read by the server; playback is checked once per minute.
 
-- **Frontend:** React, Vite, Tailwind CSS, Framer Motion  
-- **Backend:** Node.js, Express (for APIs where applicable)  
-- **Other Tools:** React Router, Zustand, Socket.IO (in projects)  
-- **Deployment:** Netlify
+Spotify refresh tokens expire after six months. Reauthorize the account and update `SPOTIFY_REFRESH_TOKEN` when needed.
 
+## Learn More
 
-## Contact
+To learn more about Next.js, take a look at the following resources:
 
-- **GitHub:** [https://github.com/Sanket2004](https://github.com/Sanket2004)
-- **LinkedIn:** [https://www.linkedin.com/in/itsanketbanerjee](https://www.linkedin.com/in/itsanketbanerjee)
-- **Email:** [itsanketbanerjee@gmail.com](mailto:itsanketbanerjee@gmail.com)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+Import this repository into [Vercel](https://vercel.com/new). Vercel uses the Next.js framework and `.next` output directory configured in `vercel.json`; use the repository root as the Root Directory and keep the default build command (`npm run build`).
+
+The site can be deployed without Spotify credentials. To enable Spotify login and Now Playing in production, add these variables in the Vercel project settings under **Settings > Environment Variables**:
+
+- `SPOTIFY_CLIENT_ID`
+- `SPOTIFY_CLIENT_SECRET`
+- `SPOTIFY_REFRESH_TOKEN`
+- `NEXT_PUBLIC_SITE_URL` (the canonical site origin, for example `https://your-domain.com`, with no trailing slash)
+
+Set them for the Production environment and redeploy. Also add `https://your-domain.com/api/spotify/callback` as a redirect URI in the Spotify Developer Dashboard. Use the same `NEXT_PUBLIC_SITE_URL` value locally in `.env.local`; copy `.env.example` as a starting point. Keep Spotify secrets out of source control.
