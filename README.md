@@ -42,7 +42,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-Import this repository into [Vercel](https://vercel.com/new). Vercel detects Next.js automatically; use the repository root as the Root Directory and keep the default build settings (`npm run build`). Do not set a custom Output Directory.
+Import this repository into [Vercel](https://vercel.com/new). Vercel uses the Next.js framework and `.next` output directory configured in `vercel.json`; use the repository root as the Root Directory and keep the default build command (`npm run build`).
 
 The site can be deployed without Spotify credentials. To enable Spotify login and Now Playing in production, add these variables in the Vercel project settings under **Settings > Environment Variables**:
 
