@@ -2,7 +2,12 @@ import ScrollToTop from "@/components/helpers/ScrollToTop";
 import SmoothScroll from "@/components/helpers/SmoothScroll";
 import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
-import { siteDescription, siteName } from "@/lib/metadata";
+import {
+  siteDescription,
+  siteKeywords,
+  siteName,
+  siteUrl,
+} from "@/lib/metadata";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -19,6 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${siteName} | Data Engineer & Full Stack Developer`,
     template: `%s | ${siteName}`,
@@ -27,20 +33,89 @@ export const metadata: Metadata = {
   applicationName: siteName,
   creator: siteName,
   publisher: siteName,
+  keywords: siteKeywords,
+  authors: [{ name: siteName }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  icons: {
+    icon: [
+      {
+        url: "/favicon-dark.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon-light.png",
+        media: "(prefers-color-scheme: light)",
+      },
+    ],
+  },
   openGraph: {
     type: "website",
     siteName,
     title: `${siteName} | Data Engineer & Full Stack Developer`,
     description: siteDescription,
+    url: siteUrl,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteName} portfolio`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${siteName} | Data Engineer & Full Stack Developer`,
     description: siteDescription,
+    images: ["/og-image.png"],
+    creator: "@sanket__dev",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteName,
+    jobTitle: "Data Engineer & Full Stack Developer",
+    url: siteUrl,
+    email: "mailto:itsanketbanerjee@gmail.com",
+    image: new URL("/og-image.png", siteUrl).toString(),
+    sameAs: [
+      "https://github.com/Sanket2004",
+      "https://www.linkedin.com/in/itsanketbanerjee",
+      "https://twitter.com/sanket__dev",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kolkata",
+      addressCountry: "IN",
+    },
+    knowsAbout: [
+      "Data engineering",
+      "Full stack development",
+      "Next.js",
+      "React",
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Cloud infrastructure",
+    ],
+  };
+
   return (
     <html
       lang="en"
@@ -49,6 +124,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <ThemeProvider
           attribute={"class"}
           defaultTheme="system"

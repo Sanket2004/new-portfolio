@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "Projects",
+  path: "/projects",
   description:
     "Explore selected full-stack, data engineering, and mobile projects by Sanket Banerjee.",
 });

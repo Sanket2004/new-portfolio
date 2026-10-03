@@ -9,6 +9,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Data Engineer & Full Stack Developer",
   absoluteTitle: true,
+  path: "/",
   description:
     "I'm Sanket Banerjee, a data engineer and full-stack developer in Kolkata, building reliable data systems, backend platforms, and thoughtful web experiences.",
 });

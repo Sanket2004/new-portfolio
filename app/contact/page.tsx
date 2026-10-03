@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "Contact",
+  path: "/contact",
   description:
     "Get in touch with Sanket Banerjee about project work, collaboration, engineering opportunities, or a quick hello.",
 });
